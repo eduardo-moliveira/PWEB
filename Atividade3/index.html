@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Privacidade e Segurança</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Privacidade e Segurança</h1>
+			<dl>
+				<dt>Autor:</dt>
+				<dd>Eduardo Mariano de Oliveira</dd>
+
+				<dt>Tema:</dt>
+				<dd>Autenticação OAuth, JWT e segurança contra XSS/CSRF</dd>
+			</dl>
+		</header>
+
+		<main>
+			<article>
+				<section>
+					<h2>Introdução</h2>
+					<p>
+						A expansão das aplicações web modernas trouxe desafios
+						significativos para a proteção de dados dos usuários. A
+						privacidade e a segurança deixaram de ser apenas
+						diferenciais e tornaram-se requisitos fundamentais no
+						desenvolvimento de software.
+					</p>
+					<p>
+						Nesse cenário, garantir que apenas usuários legítimos
+						acessem informações sensíveis exige mecanismos de
+						verificação e controle. O uso de padrões estabelecidos
+						na indústria ajuda os desenvolvedores a construir
+						sistemas mais resilientes contra ameaças constantes.
+					</p>
+				</section>
+
+				<section>
+					<h2>Autenticação e Autorização com OAuth</h2>
+					<p>
+						O protocolo OAuth 2.0 resolve o problema da delegação de
+						acesso estruturando a comunicação entre diferentes
+						sistemas. Em vez de o usuário fornecer sua senha
+						diretamente a um aplicativo, o OAuth introduz a figura
+						de um servidor terceirizado para gerenciar a
+						autorização.
+					</p>
+					<p>
+						O fluxo básico definido na RFC 6749 envolve quatro
+						partes principais.
+					</p>
+					<ul>
+						<li>
+							<strong>Dono do Recurso</strong> O usuário que
+							autoriza a manipulação de seus dados.
+						</li>
+						<li>
+							<strong>Cliente</strong> A aplicação que deseja o
+							acesso.
+						</li>
+						<li>
+							<strong>Servidor de Autorização</strong> Recebe a
+							solicitação e emite um token de acesso.
+						</li>
+						<li>
+							<strong>Servidor de Recursos</strong> Onde residem
+							os dados protegidos consumidos pelo Cliente.
+						</li>
+					</ul>
+					<p>
+						A separação dessas responsabilidades garante que o
+						Cliente nunca tenha contato com a senha do usuário,
+						operando sob o princípio do menor privilégio com acessos
+						restritos a escopos específicos.
+					</p>
+				</section>
+
+				<section>
+					<h2>JSON Web Tokens</h2>
+					<figure>
+						<img
+							src="https://talent500.com/blog/wp-content/uploads/sites/42/2025/06/JSON-WEB-TOKENS.png"
+							alt="Ilustração de Segurança JWT"
+						/>
+						<figcaption>
+							Conceito de tokens de segurança em aplicações web.
+						</figcaption>
+					</figure>
+					<p>
+						O token de acesso mencionado no fluxo do OAuth
+						frequentemente utiliza o formato JSON Web Token. Suas
+						principais características incluem uma estrutura
+						autossuficiente e proteção criptográfica.
+					</p>
+					<ol>
+						<li>
+							<strong>Stateless:</strong> Não exige que o servidor
+							guarde o estado da sessão em um banco de dados.
+						</li>
+						<li>
+							<strong>Estrutura legível:</strong> Carrega as
+							informações necessárias sobre o usuário em formato
+							de texto.
+						</li>
+						<li>
+							<strong>Assinatura digital:</strong> Garante que o
+							conteúdo não foi adulterado.
+						</li>
+					</ol>
+					<p>
+						Para mitigar a dificuldade de revogar acessos, a prática
+						padrão é configurar o JWT com um tempo de vida muito
+						curto e emitir simultaneamente um
+						<em>Refresh Token</em>. Quando o JWT original expira, a
+						aplicação utiliza o Refresh Token para solicitar um novo
+						acesso silenciosamente.
+					</p>
+				</section>
+
+				<section>
+					<h2>Vulnerabilidades Comuns e Segurança</h2>
+					<p>
+						Mesmo com protocolos conceituados, as aplicações web
+						continuam suscetíveis a ataques se o código não for
+						cuidadosamente construído. A adoção de padrões resolve
+						apenas uma parte da arquitetura de segurança.
+					</p>
+					<p>
+						O Cross-Site Scripting (XSS) ocorre quando um invasor
+						consegue injetar código malicioso em uma página
+						legítima. Um exemplo prático seria um fórum de
+						discussões onde o sistema não filtra adequadamente o
+						texto digitado. O atacante publica um comentário
+						contendo um script oculto.
+					</p>
+					<p>
+						Quando vítimas leem a página, seus navegadores executam
+						o script automaticamente, podendo capturar um JWT
+						vulnerável e enviá-lo ao invasor.
+					</p>
+				</section>
+			</article>
+		</main>
+
+		<footer>
+			<h2>Referências</h2>
+			<ul>
+				<li>
+					<a href="https://www.jwt.io/introduction" target="_blank"
+						>AUTH0. Introduction to JSON Web Tokens.</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://auth0.com/blog/oauth2-access-tokens-and-principle-of-least-privilege"
+						target="_blank"
+						>CHIARELLI, Andrea. OAuth 2.0 Access Tokens and the
+						Principle of Least Privilege.</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://datatracker.ietf.org/doc/html/rfc6749"
+						target="_blank"
+						>INTERNET ENGINEERING TASK FORCE. RFC 6749: The OAuth
+						2.0 Authorization Framework. [S. L.]: [S. N.], 2012.</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://datatracker.ietf.org/doc/html/rfc7519"
+						target="_blank"
+						>INTERNET ENGINEERING TASK FORCE. RFC 7519: JSON Web
+						Token (JWT). [S. L.]: [S. N.], 2015.</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://datatracker.ietf.org/doc/html/rfc8725"
+						target="_blank"
+						>INTERNET ENGINEERING TASK FORCE. RFC 8725: JSON Web
+						Token Best Current Practices. [S. L.]: [S. N.], 2020.</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://datatracker.ietf.org/doc/html/rfc9700"
+						target="_blank"
+						>INTERNET ENGINEERING TASK FORCE. RFC 9700: Best Current
+						Practice for OAuth 2.0 Security. [S. L.]: [S. N.],
+						2025.</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://www.ibm.com/think/topics/oauth"
+						target="_blank"
+						>LINDEMULDER, Gregg; KOSINSKI, Matthew. What is open
+						authorization (OAuth)?</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://owasp.org/www-community/attacks/xss/"
+						target="_blank"
+						>OWASP. Cross Site Scripting (XSS).</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://owasp.org/www-community/attacks/csrf"
+						target="_blank"
+						>OWASP. Cross Site Request Forgery (CSRF).</a
+					>
+				</li>
+			</ul>
+		</footer>
+	</body>
+</html>
