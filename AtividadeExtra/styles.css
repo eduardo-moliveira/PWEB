@@ -1,0 +1,160 @@
+:root {
+	--bg-color: #f4f4f9;
+	--text-color: #333333;
+	--text-muted: #666666;
+	--primary-color: #0056b3;
+	--card-bg: #ffffff;
+	--aside-bg: #fdf6e3;
+}
+
+* {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+	margin: 0;
+	padding: 0;
+
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+	margin: 0 auto;
+	padding: 1.5rem;
+	max-width: 75rem;
+
+	color: var(--text-color);
+	line-height: 1.6;
+
+	background-color: var(--bg-color);
+}
+
+header {
+	width: 100%;
+	padding: 1rem 0;
+
+	text-align: center;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	flex: 3;
+	gap: 1.5rem;
+	min-width: 20rem;
+}
+
+.card {
+	padding: 1.5rem;
+
+	background-color: var(--card-bg);
+
+	border-radius: 0.5rem;
+	box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+	margin-bottom: 0.5rem;
+
+	color: var(--primary-color);
+}
+
+.card hr {
+	margin-bottom: 1.5rem;
+
+	border: 0;
+	border-top: 0.0625rem solid #e0e0e0;
+}
+
+.card-body {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+}
+
+figure {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-width: 15rem;
+}
+
+figure img {
+	width: 100%;
+	height: 12.5rem;
+	margin-bottom: 0.5rem;
+
+	object-fit: cover;
+
+	border-radius: 0.5rem;
+}
+
+figcaption {
+	text-align: center;
+	font-size: 0.85em;
+	font-style: italic;
+	color: var(--text-muted);
+}
+
+.card-details {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex: 2;
+	gap: 1rem;
+	min-width: 15rem;
+}
+
+.card-details p {
+	text-align: justify;
+}
+
+.card-details a {
+	align-self: flex-start;
+
+	font-weight: 600;
+	text-decoration: none;
+	color: var(--primary-color);
+}
+
+.card-details a:hover {
+	text-decoration: underline;
+}
+
+aside {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	gap: 1rem;
+	min-width: 15rem;
+	height: max-content;
+	padding: 1.5rem;
+
+	background-color: var(--aside-bg);
+
+	border-radius: 0.5rem;
+	box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
+}
+
+aside h3 {
+	font-size: 1.125rem;
+
+	color: var(--text-color);
+}
+
+aside p {
+	font-size: 0.875rem;
+	font-weight: 600;
+
+	text-align: justify;
+}
+
+aside ol {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding-left: 1.5rem;
+
+	font-size: 0.875rem;
+}
