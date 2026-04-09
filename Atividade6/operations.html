@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Operações Matemáticas</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<main class="calculator">
+			<div class="calculator__card">
+				<h1>Operações Matemáticas</h1>
+
+				<form id="operationsForm">
+					<fieldset>
+						<legend>Valores Numéricos</legend>
+
+						<div class="calculator__field">
+							<label for="num1">Primeiro Número:</label>
+							<input
+								type="number"
+								id="num1"
+								name="num1"
+								required
+							/>
+						</div>
+
+						<div class="calculator__field">
+							<label for="num2">Segundo Número:</label>
+							<input
+								type="number"
+								id="num2"
+								name="num2"
+								required
+							/>
+						</div>
+					</fieldset>
+
+					<button type="submit">Executar Operações</button>
+				</form>
+
+				<section id="operationsResult" aria-live="polite">...</section>
+			</div>
+		</main>
+
+		<script src="operations.js"></script>
+	</body>
+</html>

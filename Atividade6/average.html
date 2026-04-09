@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Cálculo de Média</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<main class="calculator">
+			<div class="calculator__card">
+				<h1>Cálculo de Média</h1>
+
+				<form id="gradesForm">
+					<fieldset>
+						<legend>Dados do Aluno</legend>
+
+						<div class="calculator__field">
+							<label for="name">Nome:</label>
+							<input type="text" id="name" name="name" required />
+						</div>
+
+						<div class="calculator__field">
+							<label for="grade1">Nota 1:</label>
+							<input
+								class="js-grade-input"
+								type="number"
+								name="grade1"
+								step="0.1"
+								required
+							/>
+						</div>
+
+						<div class="calculator__field">
+							<label for="grade2">Nota 2:</label>
+							<input
+								class="js-grade-input"
+								type="number"
+								name="grade2"
+								step="0.1"
+								required
+							/>
+						</div>
+
+						<div class="calculator__field">
+							<label for="grade3">Nota 3:</label>
+							<input
+								class="js-grade-input"
+								type="number"
+								name="grade3"
+								step="0.1"
+								required
+							/>
+						</div>
+
+						<div class="calculator__field">
+							<label for="grade4">Nota 4:</label>
+							<input
+								class="js-grade-input"
+								type="number"
+								name="grade4"
+								step="0.1"
+								required
+							/>
+						</div>
+					</fieldset>
+
+					<button type="submit">Calcular Média</button>
+				</form>
+
+				<section id="gradesResult" aria-live="polite">...</section>
+			</div>
+		</main>
+
+		<script src="average.js"></script>
+	</body>
+</html>

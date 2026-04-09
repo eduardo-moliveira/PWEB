@@ -1,0 +1,87 @@
+* {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+	margin: 0;
+	padding: 0;
+
+	box-sizing: border-box;
+}
+
+.calculator {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 100%;
+	min-height: 100vh;
+}
+
+.calculator__card {
+	display: flex;
+	flex-direction: column;
+
+	align-items: center;
+
+	gap: 1rem;
+}
+
+.calculator__card h1 {
+	font-size: 1.5rem;
+}
+
+.calculator__card form {
+	display: flex;
+	flex-direction: column;
+
+	gap: 0.75rem;
+}
+
+.calculator__card fieldset {
+	display: flex;
+	flex-direction: column;
+
+	gap: 0.5rem;
+
+	padding: 0.75rem;
+
+	border-radius: 0.5rem;
+}
+
+.calculator__field {
+	display: flex;
+
+	gap: 0.5rem;
+}
+
+.calculator__field label {
+	font-weight: bold;
+}
+
+.calculator__field input {
+	flex: 1;
+}
+
+.calculator__card button {
+	padding: 0.25rem 0.5rem;
+}
+
+.calculator__card section {
+	width: 100%;
+	padding: 1rem;
+
+	background-color: #f0f0f0;
+
+	border-radius: 0.5rem;
+
+	text-align: center;
+}
+
+.calculator__card section h2 {
+	font-size: 1.25rem;
+
+	margin-bottom: 0.5rem;
+}
+
+.calculator__card section p {
+	font-size: 1rem;
+}
