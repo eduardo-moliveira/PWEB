@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pesquisa</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<main>
+			<form id="form">
+				<div class="input-field">
+					<label for="age">Idade:</label>
+					<input id="age" name="age" type="number" min="1" required />
+				</div>
+
+				<div class="radio-field">
+					<legend>Sexo:</legend>
+					<div id="gender-radio-group" class="radio-group"></div>
+				</div>
+
+				<div class="radio-field">
+					<legend>Opinião:</legend>
+					<div id="opinion-radio-group" class="radio-group"></div>
+				</div>
+
+				<button type="submit">Votar</button>
+			</form>
+
+			<div class="tables">
+				<table id="ageTable">
+					<thead>
+						<tr>
+							<th colspan="2">Idade</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+
+				<table id="genderTable">
+					<thead>
+						<tr>
+							<th>Sexo</th>
+							<th>Quantidade</th>
+							<th>Porcentagem</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+
+				<table id="opinionTable">
+					<thead>
+						<tr>
+							<th>Opinião</th>
+							<th>Contagem</th>
+							<th>Porcentagem</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</main>
+
+		<script src="script.js"></script>
+	</body>
+</html>
