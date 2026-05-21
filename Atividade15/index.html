@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Formulário</title>
+		<link rel="stylesheet" href="styles.css" />
+		<script src="script.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>Formulário</h1>
+			</header>
+			<main>
+				<form id="form">
+					<div class="input-row">
+						<label class="field">
+							<span>Nome:</span>
+							<input
+								type="text"
+								name="name"
+								aria-describedby="name-errors"
+							/>
+							<div
+								id="name-errors"
+								class="errors"
+								role="alert"
+							></div>
+						</label>
+
+						<label class="field">
+							<span>E-mail:</span>
+							<input
+								type="email"
+								name="email"
+								aria-describedby="email-errors"
+							/>
+							<div
+								id="email-errors"
+								class="errors"
+								role="alert"
+							></div>
+						</label>
+					</div>
+
+					<label class="field">
+						<span>Comentário:</span>
+						<textarea
+							name="comment"
+							rows="5"
+							aria-describedby="comment-errors"
+						></textarea>
+						<div
+							id="comment-errors"
+							class="errors"
+							role="alert"
+						></div>
+					</label>
+
+					<h2>Pesquisa:</h2>
+
+					<fieldset>
+						<legend>Primeira vez nesta página?</legend>
+
+						<div class="radio-row">
+							<label class="field field--horizontal">
+								<input
+									type="radio"
+									name="firstTime"
+									value="yes"
+									aria-describedby="firstTime-errors"
+								/>
+								<span>Sim</span>
+							</label>
+
+							<label class="field field--horizontal">
+								<input
+									type="radio"
+									name="firstTime"
+									value="no"
+									aria-describedby="firstTime-errors"
+								/>
+								<span>Não</span>
+							</label>
+						</div>
+
+						<div
+							id="firstTime-errors"
+							class="errors"
+							role="alert"
+						></div>
+					</fieldset>
+
+					<div class="button-row">
+						<button type="submit">Enviar</button>
+						<button type="reset">Limpar</button>
+					</div>
+				</form>
+
+				<div class="result">
+					<p id="result"></p>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>
