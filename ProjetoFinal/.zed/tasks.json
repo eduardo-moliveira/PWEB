@@ -1,0 +1,27 @@
+[
+	{
+		"label": "Angular: Serve",
+		"command": "npm",
+		"args": ["run", "start"],
+		"reveal": "always"
+	},
+	{
+		"label": "Angular: Build",
+		"command": "npm",
+		"args": ["run", "build"],
+		"reveal": "always",
+		"hide": "on_success"
+	},
+	{
+		"label": "Angular: Watch",
+		"command": "npm",
+		"args": ["run", "watch"],
+		"reveal": "always"
+	},
+	{
+		"label": "Angular: Test",
+		"command": "npm",
+		"args": ["run", "test"],
+		"reveal": "always"
+	}
+]
