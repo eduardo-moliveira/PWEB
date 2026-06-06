@@ -1,0 +1,9 @@
+<button [type]="type()" [disabled]="disabled() || loading()">
+	@if (loading()) {
+		<i class="pi pi-spinner pi-spin"></i>
+	} @else if (icon()) {
+		<i class="pi {{ icon() }}"></i>
+	}
+
+	<ng-content></ng-content>
+</button>
