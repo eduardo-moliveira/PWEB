@@ -62,7 +62,8 @@
 							"buildTarget": "ProjetoFinal:build:production"
 						},
 						"development": {
-							"buildTarget": "ProjetoFinal:build:development"
+							"buildTarget": "ProjetoFinal:build:development",
+							"allowedHosts": [".ts.net"]
 						}
 					},
 					"defaultConfiguration": "development"
