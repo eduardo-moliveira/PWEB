@@ -72,7 +72,7 @@ export class StorageService extends Dexie {
 			const seedAppointments: Appointment[] = [
 				{
 					carModel: 'Hyundai HB20',
-					carPlate: '',
+					carPlate: 'HHH2020',
 					dateTime: todayAt(11),
 					isConfirmed: false,
 					status: 'pending',
@@ -82,7 +82,7 @@ export class StorageService extends Dexie {
 				},
 				{
 					carModel: 'Renault Sandero',
-					carPlate: '',
+					carPlate: 'LLL1111',
 					dateTime: todayAt(14),
 					isConfirmed: false,
 					status: 'pending',
@@ -92,7 +92,7 @@ export class StorageService extends Dexie {
 				},
 				{
 					carModel: 'Ford Ka',
-					carPlate: '',
+					carPlate: 'JJJ0000',
 					dateTime: todayAt(17),
 					isConfirmed: false,
 					status: 'pending',
@@ -284,12 +284,16 @@ export class StorageService extends Dexie {
 		return appointments.map((a) => this._toAppAppointment(a));
 	}
 
+	async addAppointment(appointment: Appointment): Promise<number> {
+		return this.appointments.add(this._toDbAppointment(appointment));
+	}
+
 	async updateAppointment(id: number, changes: Partial<Appointment>): Promise<number> {
 		return this.appointments.update(id, this._toDbPartialAppointment(changes));
 	}
 
-	async addAppointment(appointment: Appointment): Promise<number> {
-		return this.appointments.add(this._toDbAppointment(appointment));
+	async deleteAppointment(id: number) {
+		return this.appointments.delete(id);
 	}
 
 	async getAllServices(): Promise<Service[]> {
