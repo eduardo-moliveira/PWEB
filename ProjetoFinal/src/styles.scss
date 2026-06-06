@@ -1,0 +1,178 @@
+:root {
+	--background: oklch(0.99 0.01 260);
+	--background-light: oklch(0.96 0.02 260);
+	--background-dark: oklch(0.92 0.03 260);
+	--background-disabled: oklch(0.94 0.01 260);
+
+	--text: oklch(0.25 0.04 260);
+	--text-muted: oklch(0.45 0.04 260);
+	--text-disabled: oklch(0.65 0.02 260);
+
+	--highlight: oklch(0.88 0.15 245);
+
+	--border: oklch(0.85 0.04 260);
+	--border-muted: oklch(0.92 0.02 260);
+
+	--overlay: oklch(0.15 0.02 260 / 0.5);
+	--focus-ring: oklch(from var(--primary) l c h / 0.5);
+
+	--primary: oklch(0.52 0.18 258);
+	--primary-hover: oklch(from var(--primary) calc(l - 0.05) c h);
+	--primary-active: oklch(from var(--primary) calc(l - 0.1) c h);
+	--primary-subtle: oklch(from var(--primary) 0.95 0.03 h);
+	--text-on-primary: oklch(from var(--primary) 0.98 0.01 h);
+
+	--secondary: oklch(0.75 0.14 245);
+	--secondary-hover: oklch(from var(--secondary) calc(l - 0.05) c h);
+	--secondary-active: oklch(from var(--secondary) calc(l - 0.1) c h);
+	--secondary-subtle: oklch(from var(--secondary) 0.95 0.03 h);
+	--text-on-secondary: oklch(from var(--secondary) 0.25 0.04 h);
+
+	--danger: oklch(0.62 0.19 25);
+	--danger-hover: oklch(from var(--danger) calc(l - 0.05) c h);
+	--danger-active: oklch(from var(--danger) calc(l - 0.1) c h);
+	--danger-subtle: oklch(from var(--danger) 0.95 0.03 h);
+	--text-on-danger: oklch(from var(--danger) 0.98 0.01 h);
+
+	--warning: oklch(0.82 0.16 85);
+	--warning-hover: oklch(from var(--warning) calc(l - 0.05) c h);
+	--warning-active: oklch(from var(--warning) calc(l - 0.1) c h);
+	--warning-subtle: oklch(from var(--warning) 0.95 0.03 h);
+	--text-on-warning: oklch(from var(--warning) 0.2 0.04 h);
+
+	--success: oklch(0.68 0.16 150);
+	--success-hover: oklch(from var(--success) calc(l - 0.05) c h);
+	--success-active: oklch(from var(--success) calc(l - 0.1) c h);
+	--success-subtle: oklch(from var(--success) 0.95 0.03 h);
+	--text-on-success: oklch(from var(--success) 0.98 0.01 h);
+
+	--info: oklch(0.52 0.18 258);
+	--info-hover: oklch(from var(--info) calc(l - 0.05) c h);
+	--info-active: oklch(from var(--info) calc(l - 0.1) c h);
+	--info-subtle: oklch(from var(--info) 0.95 0.03 h);
+	--text-on-info: oklch(from var(--info) 0.98 0.01 h);
+}
+
+:root[data-theme='dark'] {
+	--background: oklch(0.15 0.02 260);
+	--background-light: oklch(0.2 0.02 260);
+	--background-dark: oklch(0.1 0.02 260);
+	--background-disabled: oklch(0.2 0.01 260);
+
+	--text: oklch(0.95 0.02 260);
+	--text-muted: oklch(0.7 0.02 260);
+	--text-disabled: oklch(0.4 0.02 260);
+
+	--highlight: oklch(0.75 0.15 245);
+
+	--border: oklch(0.25 0.02 260);
+	--border-muted: oklch(0.2 0.02 260);
+
+	--overlay: oklch(0.02 0.01 260 / 0.6);
+
+	--primary: oklch(0.7 0.16 258);
+	--primary-subtle: oklch(from var(--primary) 0.25 0.04 h);
+	--text-on-primary: oklch(from var(--primary) 0.15 0.02 h);
+
+	--secondary: oklch(0.85 0.1 245);
+	--secondary-subtle: oklch(from var(--secondary) 0.25 0.04 h);
+	--text-on-secondary: oklch(from var(--secondary) 0.15 0.02 h);
+
+	--danger: oklch(0.75 0.16 25);
+	--danger-subtle: oklch(from var(--danger) 0.25 0.04 h);
+	--text-on-danger: oklch(from var(--danger) 0.15 0.02 h);
+
+	--warning: oklch(0.85 0.14 85);
+	--warning-subtle: oklch(from var(--warning) 0.25 0.04 h);
+	--text-on-warning: oklch(from var(--warning) 0.15 0.02 h);
+
+	--success: oklch(0.78 0.14 150);
+	--success-subtle: oklch(from var(--success) 0.25 0.04 h);
+	--text-on-success: oklch(from var(--success) 0.15 0.02 h);
+
+	--info: oklch(0.7 0.16 258);
+	--info-subtle: oklch(from var(--info) 0.25 0.04 h);
+	--text-on-info: oklch(from var(--info) 0.15 0.02 h);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+
+	box-sizing: border-box;
+
+	border: none;
+	outline: none;
+}
+
+*:focus-visible {
+	outline: 2px solid var(--focus-ring);
+	outline-offset: 2px;
+}
+
+html,
+body {
+	height: 100%;
+
+	font-family: 'Inter', system-ui, sans-serif;
+
+	line-height: 1.5;
+	-webkit-text-size-adjust: 100%;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+button {
+	cursor: pointer;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 1.802rem;
+}
+h2 {
+	font-size: 1.602rem;
+}
+h3 {
+	font-size: 1.424rem;
+}
+h4 {
+	font-size: 1.266rem;
+}
+h5 {
+	font-size: 1.125rem;
+}
+small {
+	font-size: 0.889rem;
+}
