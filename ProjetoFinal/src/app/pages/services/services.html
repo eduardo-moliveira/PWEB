@@ -1,0 +1,52 @@
+<header>
+	<h2>Gerenciar Serviços</h2>
+
+	<app-button icon="pi-plus" (click)="openNewServiceModal()">Novo Serviço</app-button>
+</header>
+
+<div class="table-container">
+	<table>
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Descrição</th>
+				<th>Tempo</th>
+				<th>Preço</th>
+				<th>Ativo</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			@for (service of services(); track service.id) {
+				<tr>
+					<td data-label="Nome">{{ service.name }}</td>
+					<td data-label="Descrição" class="tmp">{{ service.description }}</td>
+					<td data-label="Tempo">{{ service.duration }} min</td>
+					<td data-label="Preço">{{ service.price | currency: 'BRL' }}</td>
+					<td data-label="Ativo">
+						<app-toggle-switch
+							[checked]="service.isActive"
+							(checkedChange)="toggleServiceStatus(service)"
+						/>
+					</td>
+					<td data-label="Ações">
+						<app-button
+							class="action"
+							icon="pi-pencil"
+							(click)="openEditServiceModal(service)"
+						/>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+
+<app-modal
+	[heading]="selectedService() ? 'Editar Serviço' : 'Cadastrar Novo Serviço'"
+	[(isOpen)]="isModalOpen"
+>
+	@if (isModalOpen()) {
+		<app-service-form [service]="selectedService()" (closeForm)="isModalOpen.set(false)" />
+	}
+</app-modal>
