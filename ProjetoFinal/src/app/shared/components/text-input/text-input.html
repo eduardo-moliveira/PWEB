@@ -1,0 +1,20 @@
+<label>
+	<span class="label-text">{{ label() }}</span>
+
+	<input
+		[type]="type()"
+		[step]="step()"
+		[formControl]="control()"
+		[placeholder]="placeholder()"
+		[attr.maxlength]="maxLength()"
+		(blur)="markAsTouched()"
+	/>
+</label>
+
+@if (hasError) {
+	<ul class="error-list">
+		@for (error of errorMessages; track error) {
+			<li>{{ error }}</li>
+		}
+	</ul>
+}
