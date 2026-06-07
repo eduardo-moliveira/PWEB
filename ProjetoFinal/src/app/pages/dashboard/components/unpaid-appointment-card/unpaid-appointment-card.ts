@@ -1,5 +1,5 @@
 import { Component, inject, input, signal } from '@angular/core';
-import { AppointmentService } from '../../../../shared/services/appointment/appointment';
+import { AppointmentsService } from '../../../../shared/services/appointments/appointment';
 import { Appointment } from '../../../../shared/services/storage/storage';
 import { CurrencyPipe } from '@angular/common';
 import { ButtonComponent } from '../../../../shared/components/button/button';
@@ -11,7 +11,7 @@ import { ButtonComponent } from '../../../../shared/components/button/button';
 	styleUrl: './unpaid-appointment-card.scss',
 })
 export class UnpaidAppointmentCardComponent {
-	private _appointmentService = inject(AppointmentService);
+	private _appointmentsService = inject(AppointmentsService);
 
 	appointment = input.required<Appointment>();
 
@@ -27,7 +27,7 @@ export class UnpaidAppointmentCardComponent {
 		this.isPaying.set(true);
 
 		try {
-			await this._appointmentService.updateAppointment(id, { isPaid: true });
+			await this._appointmentsService.updateAppointment(id, { isPaid: true });
 		} catch (err) {
 			// TODO?: Toast message
 		}

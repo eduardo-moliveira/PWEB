@@ -2,7 +2,7 @@ import { Component, inject, input, signal } from '@angular/core';
 import { Appointment } from '../../../../shared/services/storage/storage';
 import { DatePipe } from '@angular/common';
 import { ButtonComponent } from '../../../../shared/components/button/button';
-import { AppointmentService } from '../../../../shared/services/appointment/appointment';
+import { AppointmentsService } from '../../../../shared/services/appointments/appointment';
 
 @Component({
 	selector: 'dashboard-unconfirmed-appointment-card',
@@ -11,7 +11,7 @@ import { AppointmentService } from '../../../../shared/services/appointment/appo
 	styleUrl: './unconfirmed-appointment-card.scss',
 })
 export class UnconfirmedAppointmentCardComponent {
-	private _appointmentService = inject(AppointmentService);
+	private _appointmentsService = inject(AppointmentsService);
 
 	appointment = input.required<Appointment>();
 
@@ -28,7 +28,7 @@ export class UnconfirmedAppointmentCardComponent {
 		this.isRefusing.set(true);
 
 		try {
-			await this._appointmentService.deleteAppointment(id);
+			await this._appointmentsService.deleteAppointment(id);
 		} catch (err) {
 			// TODO?: Toast message
 		}
@@ -46,7 +46,7 @@ export class UnconfirmedAppointmentCardComponent {
 		this.isConfirming.set(true);
 
 		try {
-			await this._appointmentService.updateAppointment(id, { isConfirmed: true });
+			await this._appointmentsService.updateAppointment(id, { isConfirmed: true });
 		} catch (err) {
 			// TODO?: Toast message
 		}

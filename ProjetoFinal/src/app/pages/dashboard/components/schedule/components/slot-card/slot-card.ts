@@ -1,7 +1,7 @@
 import { Component, computed, effect, inject, input, signal } from '@angular/core';
 import { Appointment } from '../../../../../../shared/services/storage/storage';
 import { DatePipe } from '@angular/common';
-import { AppointmentService } from '../../../../../../shared/services/appointment/appointment';
+import { AppointmentsService } from '../../../../../../shared/services/appointments/appointment';
 import { RadioButton } from '../../../../../../shared/components/radio-button/radio-button';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { catchError, distinctUntilChanged, switchMap, EMPTY, from } from 'rxjs';
@@ -27,7 +27,7 @@ interface StatusStyle {
 	styleUrl: './slot-card.scss',
 })
 export class SlotCardComponent {
-	private _appointmentService = inject(AppointmentService);
+	private _appointmentsService = inject(AppointmentsService);
 
 	appointment = input.required<Appointment>();
 
@@ -79,7 +79,7 @@ export class SlotCardComponent {
 					if (!id || newStatus === this.fallbackStatus) return EMPTY;
 
 					return from(
-						this._appointmentService.updateAppointment(id, { status: newStatus }),
+						this._appointmentsService.updateAppointment(id, { status: newStatus }),
 					).pipe(
 						catchError(() => {
 							this.localStatus.set(this.fallbackStatus);
