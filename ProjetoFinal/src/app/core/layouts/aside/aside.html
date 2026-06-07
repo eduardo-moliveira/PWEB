@@ -1,0 +1,28 @@
+<header class="mobile-header">
+	<h3>New Car</h3>
+
+	<button class="menu-toggle" (click)="toggleMobileMenu()">
+		<i class="pi pi-bars"></i>
+	</button>
+</header>
+
+<div class="overlay" [class.open]="isMobileMenuOpen()" (click)="closeMobileMenu()"></div>
+
+<aside [class.open]="isMobileMenuOpen()">
+	<div class="brand">
+		<h2>New Car</h2>
+	</div>
+
+	<nav>
+		@for (item of menuItems; track item.path) {
+			<a [routerLink]="item.path" routerLinkActive="active" (click)="closeMobileMenu()">
+				<i class="pi {{ item.icon }}"></i>
+				<span>{{ item.label }}</span>
+			</a>
+		}
+	</nav>
+</aside>
+
+<main>
+	<router-outlet />
+</main>

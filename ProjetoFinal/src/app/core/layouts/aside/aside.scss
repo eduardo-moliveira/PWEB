@@ -1,0 +1,155 @@
+:host {
+	display: grid;
+	grid-template-columns: 16rem minmax(0, 1fr);
+	grid-template-rows: 100vh;
+
+	width: 100%;
+	height: 100vh;
+
+	background-color: var(--background);
+}
+
+.mobile-header {
+	display: none;
+}
+
+.overlay {
+	display: none;
+}
+
+aside {
+	display: flex;
+	flex-direction: column;
+
+	background-color: var(--background-light);
+	border-right: 1px solid var(--border);
+}
+
+.brand {
+	display: flex;
+	align-items: center;
+
+	height: 4rem;
+	padding: 0 1.5rem;
+
+	border-bottom: 1px solid var(--border);
+}
+
+nav {
+	display: flex;
+	flex-direction: column;
+
+	padding: 1.5rem 1rem;
+	gap: 0.5rem;
+}
+
+a {
+	display: flex;
+	align-items: center;
+
+	padding: 0.75rem 1rem;
+	gap: 1rem;
+
+	border-radius: 0.5rem;
+
+	color: var(--text-muted);
+	font-weight: 500;
+
+	transition:
+		background-color 0.2s,
+		color 0.2s;
+}
+
+a:hover {
+	background-color: var(--background-dark);
+	color: var(--text);
+}
+
+a.active {
+	background-color: var(--highlight);
+	color: var(--primary);
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+
+	height: 100%;
+
+	overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+	:host {
+		grid-template-columns: 1fr;
+		grid-template-rows: auto minmax(0, 1fr);
+	}
+
+	.mobile-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		height: 4rem;
+		padding: 0 1.5rem;
+
+		background-color: var(--background-light);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.menu-toggle {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 2.5rem;
+		height: 2.5rem;
+
+		background: transparent;
+		border: none;
+		border-radius: 0.25rem;
+
+		color: var(--text);
+	}
+
+	.overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		display: block;
+
+		background-color: var(--overlay);
+
+		opacity: 0;
+		pointer-events: none;
+		z-index: 40;
+
+		transition: opacity 0.2s;
+	}
+
+	.overlay.open {
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	aside {
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+
+		width: 16rem;
+
+		transform: translateX(-100%);
+		z-index: 50;
+
+		transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	aside.open {
+		transform: translateX(0);
+	}
+}
