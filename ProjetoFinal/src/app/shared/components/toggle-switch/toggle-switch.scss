@@ -1,0 +1,87 @@
+:host {
+	--c-width: 2.5rem;
+	--c-height: 1.375rem;
+	--c-dot-size: 1rem;
+	--c-dot-offset: calc((var(--c-height) - var(--c-dot-size)) / 2);
+
+	--c-bg-color: var(--background-dark);
+	--c-bg-checked-color: var(--primary);
+	--c-bg-hover-color: var(--background-light);
+	--c-bg-checked-hover-color: var(--primary-hover);
+
+	--c-dot-color: var(--background);
+
+	display: inline-flex;
+}
+
+label {
+	position: relative;
+
+	display: inline-flex;
+	align-items: center;
+
+	width: var(--c-width);
+	height: var(--c-height);
+
+	cursor: pointer;
+	user-select: none;
+}
+
+input {
+	position: absolute;
+
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+
+	white-space: nowrap;
+	border: none;
+}
+
+.slider {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	background-color: var(--c-bg-color);
+	border-radius: 9999px;
+
+	transition: background-color 0.2s;
+}
+
+.slider:before {
+	content: '';
+	position: absolute;
+
+	height: var(--c-dot-size);
+	width: var(--c-dot-size);
+	left: var(--c-dot-offset);
+	bottom: var(--c-dot-offset);
+
+	background-color: var(--c-dot-color);
+	border-radius: 50%;
+
+	transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+label:hover .slider {
+	background-color: var(--c-bg-hover-color);
+}
+
+:host(.checked) label:hover .slider {
+	background-color: var(--c-bg-checked-hover-color);
+}
+
+:host(.checked) .slider {
+	background-color: var(--c-bg-checked-color);
+}
+
+:host(.checked) .slider:before {
+	transform: translateX(calc(var(--c-width) - var(--c-dot-size) - (var(--c-dot-offset) * 2)));
+}
