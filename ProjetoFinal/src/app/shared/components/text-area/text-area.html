@@ -1,0 +1,19 @@
+<label>
+	<span class="label-text">{{ label() }}</span>
+
+	<textarea
+		[rows]="rows()"
+		[formControl]="control()"
+		[placeholder]="placeholder()"
+		[attr.maxlength]="maxLength()"
+		(blur)="markAsTouched()"
+	></textarea>
+</label>
+
+@if (hasError) {
+	<ul class="error-list">
+		@for (error of errorMessages; track error) {
+			<li>{{ error }}</li>
+		}
+	</ul>
+}
