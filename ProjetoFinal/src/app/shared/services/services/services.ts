@@ -23,21 +23,8 @@ export class ServicesService {
 		const service = await this._storageService.getService(id);
 
 		if (service && service.id) {
-			// May suffer from race conditions
-			this._services.update((services) => {
-				const index = services.findIndex((s) => s.id === id);
-
-				if (index === -1) return [...services, service];
-
-				const copy = [...services];
-
-				copy[index] = {
-					...copy[index],
-					...service,
-				};
-
-				return copy;
-			});
+			// The wait for a brute force re-fetch is unnoticeable
+			this.fetchAll();
 		}
 
 		return service;
@@ -46,8 +33,8 @@ export class ServicesService {
 	async addService(service: Service) {
 		const id = await this._storageService.addService(service);
 
-		// May suffer from race conditions
-		this._services.update((services) => [...services, { id, ...service }]);
+		// The wait for a brute force re-fetch is unnoticeable
+		this.fetchAll();
 
 		return id;
 	}
@@ -57,27 +44,7 @@ export class ServicesService {
 
 		if (updateCount !== 1) throw Error(':(');
 
-		let found = true;
-
-		// May suffer from race conditions
-		this._services.update((services) => {
-			const index = services.findIndex((s) => s.id === id);
-
-			if (index === -1) {
-				found = false;
-				return services;
-			}
-
-			const copy = [...services];
-
-			copy[index] = {
-				...copy[index],
-				...changes,
-			};
-
-			return copy;
-		});
-
-		if (!found) this.fetchService(id);
+		// The wait for a brute force re-fetch is unnoticeable
+		this.fetchAll();
 	}
 }

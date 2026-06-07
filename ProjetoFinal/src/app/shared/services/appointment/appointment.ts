@@ -73,7 +73,6 @@ export class AppointmentService {
 	async addAppointment(appointment: Appointment) {
 		const retValue = await this._storageService.addAppointment(appointment);
 
-		// TODO?: Incremental updates
 		// The wait for a brute force re-fetch is unnoticeable
 		this.fetchAll();
 
@@ -85,7 +84,6 @@ export class AppointmentService {
 
 		if (updateCount !== 1) throw Error(':(');
 
-		// TODO?: Incremental updates
 		// The wait for a brute force re-fetch is unnoticeable
 		this.fetchAll();
 	}
@@ -93,7 +91,6 @@ export class AppointmentService {
 	async deleteAppointment(id: number) {
 		await this._storageService.deleteAppointment(id);
 
-		// TODO?: Incremental updates
 		// The wait for a brute force re-fetch is unnoticeable
 		this.fetchAll();
 	}
