@@ -1,1 +1,29 @@
-<p>dashboard works!</p>
+<header>
+	<h2>Painel de Controle</h2>
+
+	<time [attr.datetime]="currentDate.toISOString()">
+		{{ currentDate | date: "EEEE, dd 'de' MMMM 'de' yyyy" }}
+	</time>
+</header>
+
+<dashboard-schedule [fromHours]="8" [toHours]="18" [appointments]="confirmedAppointments()" />
+
+<dashboard-appointment-list-section
+	title="Agendamentos Pendentes"
+	listingLabel="solicitações"
+	[appointments]="unconfirmedAppointments()"
+>
+	<ng-template let-appointment>
+		<dashboard-unconfirmed-appointment-card [appointment]="appointment" />
+	</ng-template>
+</dashboard-appointment-list-section>
+
+<dashboard-appointment-list-section
+	title="Aguardando Pagamento"
+	listingLabel="veículos concluídos"
+	[appointments]="unpaidAppointments()"
+>
+	<ng-template let-appointment>
+		<dashboard-unpaid-appointment-card [appointment]="appointment" />
+	</ng-template>
+</dashboard-appointment-list-section>

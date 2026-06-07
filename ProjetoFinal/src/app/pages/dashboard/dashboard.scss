@@ -1,0 +1,65 @@
+:host {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 380px;
+	grid-template-rows: auto minmax(0, 1fr) minmax(0, 1fr);
+	height: 100vh;
+	padding: 1rem;
+	gap: 1rem;
+	box-sizing: border-box;
+}
+
+header {
+	grid-column: 1 / -1;
+}
+
+dashboard-schedule {
+	grid-column: 1;
+	grid-row: 2 / 4;
+	min-height: 0;
+}
+
+dashboard-appointment-list-section:nth-of-type(1) {
+	grid-column: 2;
+	grid-row: 2;
+	min-height: 0;
+}
+
+dashboard-appointment-list-section:nth-of-type(2) {
+	grid-column: 2;
+	grid-row: 3;
+	min-height: 0;
+}
+
+@media (max-width: 1024px) {
+	:host {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	}
+
+	dashboard-schedule {
+		grid-column: 1 / -1;
+		grid-row: 2;
+	}
+
+	dashboard-appointment-list-section:nth-of-type(1) {
+		grid-column: 1;
+		grid-row: 3;
+	}
+
+	dashboard-appointment-list-section:nth-of-type(2) {
+		grid-column: 2;
+		grid-row: 3;
+	}
+}
+
+@media (max-width: 768px) {
+	:host {
+		display: flex;
+		flex-direction: column;
+		height: auto;
+	}
+
+	dashboard-schedule,
+	dashboard-appointment-list-section {
+		height: 32rem;
+	}
+}
