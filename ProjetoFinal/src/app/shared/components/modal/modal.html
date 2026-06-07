@@ -1,0 +1,10 @@
+<dialog #dialogRef (cancel)="onCancel($event)">
+	<header>
+		<h3>{{ heading() }}</h3>
+		<app-button icon="pi-times" class="close-btn" (click)="isOpen.set(false)" />
+	</header>
+
+	<div class="content">
+		<ng-content></ng-content>
+	</div>
+</dialog>
