@@ -1,0 +1,26 @@
+<header>
+	<h5>{{ appointment().carModel }}</h5>
+	<time [attr.datetime]="appointment().dateTime.toISOString()">
+		{{ appointment().dateTime | date: 'HH:mm' }}
+	</time>
+</header>
+
+<div class="details">
+	<small>{{ appointment().carPlate }} &bull; {{ appointment().services.join(' + ') }}</small>
+</div>
+
+<footer>
+	@for (status of statuses; track status.value) {
+		<app-radio-button
+			[name]="radioName()"
+			[value]="status.value"
+			[(checkedValue)]="localStatus"
+			[style.--c-bg-checked-color]="statusStyles[status.value].checked"
+			[style.--c-bg-checked-active-color]="statusStyles[status.value].active"
+			[style.--c-bg-checked-hover-color]="statusStyles[status.value].hover"
+			[style.--c-text-checked-color]="statusStyles[status.value].text"
+		>
+			{{ status.label }}
+		</app-radio-button>
+	}
+</footer>
