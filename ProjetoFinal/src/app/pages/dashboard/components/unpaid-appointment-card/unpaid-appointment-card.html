@@ -1,0 +1,12 @@
+<header>
+	<h5>{{ appointment().carModel }}</h5>
+	<p>{{ appointment().total | currency: 'BRL' }}</p>
+</header>
+
+<div class="details">
+	<small>{{ appointment().services.join(' + ') }}</small>
+</div>
+
+<footer>
+	<app-button [loading]="isPaying()" (click)="handlePayment()"> Lançar Pagamento </app-button>
+</footer>
