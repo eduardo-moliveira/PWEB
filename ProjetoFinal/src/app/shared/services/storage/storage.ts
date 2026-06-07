@@ -300,6 +300,10 @@ export class StorageService extends Dexie {
 		return this.services.toArray();
 	}
 
+	async getService(id: number): Promise<Service | undefined> {
+		return this.services.get(id);
+	}
+
 	async addService(service: Service): Promise<number> {
 		return this.services.add(service);
 	}
