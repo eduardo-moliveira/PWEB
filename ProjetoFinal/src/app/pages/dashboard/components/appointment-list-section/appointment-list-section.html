@@ -1,0 +1,13 @@
+<header>
+	<h2>{{ title() }}</h2>
+	<p>{{ appointments().length }} {{ listingLabel() }}</p>
+</header>
+
+<div class="list">
+	@for (appointment of appointments(); track appointment.id) {
+		<ng-container
+			[ngTemplateOutlet]="cardTemplate()"
+			[ngTemplateOutletContext]="{ $implicit: appointment }"
+		/>
+	}
+</div>
