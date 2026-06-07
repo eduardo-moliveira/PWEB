@@ -1,0 +1,24 @@
+form {
+	display: flex;
+	flex-direction: column;
+
+	gap: 1.5rem;
+}
+
+footer {
+	display: flex;
+
+	justify-content: flex-end;
+	align-items: center;
+
+	gap: 1rem;
+	margin-top: 0.5rem;
+}
+
+app-button.cancel {
+	--c-bg-color: transparent;
+	--c-bg-hover-color: var(--background-light);
+	--c-bg-active-color: var(--background-dark);
+
+	--c-text-color: var(--text-muted);
+}

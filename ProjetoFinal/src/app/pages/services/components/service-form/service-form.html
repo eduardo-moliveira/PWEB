@@ -1,0 +1,37 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+	<app-text-input
+		label="Nome"
+		placeholder="Ex: Higienização Interna"
+		[control]="form.controls.name"
+		[maxLength]="50"
+	/>
+
+	<app-text-area
+		label="Descrição"
+		placeholder="Descreva os detalhes do serviço..."
+		[rows]="3"
+		[control]="form.controls.description"
+		[maxLength]="300"
+	/>
+
+	<app-text-input
+		label="Tempo Estimado (minutos)"
+		type="number"
+		step="1"
+		placeholder="Ex: 60"
+		[control]="form.controls.duration"
+	/>
+
+	<app-text-input
+		label="Preço Base (R$)"
+		type="number"
+		step="0.01"
+		placeholder="Ex: 150.00"
+		[control]="form.controls.price"
+	/>
+
+	<footer>
+		<app-button type="button" class="cancel" (click)="closeForm.emit()">Cancelar</app-button>
+		<app-button type="submit" class="save" [loading]="isSaving()">Salvar</app-button>
+	</footer>
+</form>
