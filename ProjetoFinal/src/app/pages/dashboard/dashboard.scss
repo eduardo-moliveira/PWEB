@@ -2,9 +2,12 @@
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) 380px;
 	grid-template-rows: auto minmax(0, 1fr) minmax(0, 1fr);
+
 	height: 100vh;
+
 	padding: 1rem;
 	gap: 1rem;
+
 	box-sizing: border-box;
 }
 

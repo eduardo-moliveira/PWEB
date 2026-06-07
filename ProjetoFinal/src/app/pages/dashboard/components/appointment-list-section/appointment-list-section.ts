@@ -9,7 +9,7 @@ import { Appointment } from '../../../../shared/services/storage/storage';
 	styleUrl: './appointment-list-section.scss',
 })
 export class AppointmentListSectionComponent {
-	title = input.required<string>();
+	heading = input.required<string>();
 	listingLabel = input<string>('itens');
 
 	appointments = input.required<Appointment[]>();

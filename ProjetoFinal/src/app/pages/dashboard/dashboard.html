@@ -9,7 +9,7 @@
 <dashboard-schedule [fromHours]="8" [toHours]="18" [appointments]="confirmedAppointments()" />
 
 <dashboard-appointment-list-section
-	title="Agendamentos Pendentes"
+	heading="Agendamentos Pendentes"
 	listingLabel="solicitações"
 	[appointments]="unconfirmedAppointments()"
 >
@@ -19,7 +19,7 @@
 </dashboard-appointment-list-section>
 
 <dashboard-appointment-list-section
-	title="Aguardando Pagamento"
+	heading="Aguardando Pagamento"
 	listingLabel="veículos concluídos"
 	[appointments]="unpaidAppointments()"
 >
