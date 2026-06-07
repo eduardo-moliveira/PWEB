@@ -1,0 +1,29 @@
+<header>
+	<h5>{{ appointment().carModel }}</h5>
+	<time [attr.datetime]="appointment().dateTime.toISOString()">
+		{{ appointment().dateTime | date: 'HH:mm' }}
+	</time>
+</header>
+
+<div class="details">
+	<small>{{ appointment().services.join(' + ') }}</small>
+</div>
+
+<footer>
+	<app-button
+		class="refuse"
+		[loading]="isRefusing()"
+		[disabled]="isConfirming()"
+		(click)="handleRefuse()"
+	>
+		Recusar
+	</app-button>
+	<app-button
+		class="confirm"
+		[loading]="isConfirming()"
+		[disabled]="isRefusing()"
+		(click)="handleConfirm()"
+	>
+		Confirmar
+	</app-button>
+</footer>
