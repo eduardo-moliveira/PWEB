@@ -28,9 +28,13 @@ export class ScheduleComponent {
 			const startTime = new Date(new Date().setHours(i, 0, 0, 0));
 			const endTime = new Date(new Date().setHours(i + 1, 0, 0, 0));
 
+			// Compare appointments by hour only because the seeded data is fixed to a single day
+			// This prevents slot matching from breaking once the real current date changes
 			const appointments =
 				this.appointments()?.filter(
-					(a) => a.dateTime >= startTime && a.dateTime < endTime,
+					(a) =>
+						a.dateTime.getHours() >= startTime.getHours() &&
+						a.dateTime.getHours() < endTime.getHours(),
 				) ?? [];
 
 			slots.push({ startTime, endTime, appointments });
