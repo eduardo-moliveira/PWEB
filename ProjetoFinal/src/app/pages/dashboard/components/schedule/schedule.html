@@ -1,0 +1,19 @@
+<header>
+	<h4>Agenda do Dia</h4>
+</header>
+
+<ol class="schedule-list">
+	@for (slot of slots(); track slot.startTime.toISOString()) {
+		<li class="slot">
+			<time class="slot__time" [attr.datetime]="slot.startTime.toISOString()">
+				{{ slot.startTime | date: 'HH:mm' }}
+			</time>
+
+			<div class="slot__appointments">
+				@for (appointment of slot.appointments; track appointment.id) {
+					<schedule-slot-card [appointment]="appointment" />
+				}
+			</div>
+		</li>
+	}
+</ol>
